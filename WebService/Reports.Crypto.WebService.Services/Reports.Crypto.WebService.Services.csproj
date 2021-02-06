@@ -5,10 +5,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Contracts" />
-    </ItemGroup>
-
-    <ItemGroup>
       <ProjectReference Include="..\Reports.Crypto.WebService.DAL\Reports.Crypto.WebService.DAL.csproj" />
     </ItemGroup>
 

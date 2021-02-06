@@ -5,8 +5,8 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Context" />
-      <Folder Include="Repositories" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="5.0.2" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="5.0.2" />
     </ItemGroup>
 
 </Project>
