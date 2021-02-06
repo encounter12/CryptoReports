@@ -355,3 +355,8 @@ riderModule.iml
 
 # User specific Rider folders
 **/.idea/
+
+# SQLite db files
+*.db
+*.db-shm
+*.db-wal
