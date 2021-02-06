@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <Folder Include="Contracts" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Reports.Crypto.WebService.DAL\Reports.Crypto.WebService.DAL.csproj" />
+    </ItemGroup>
+
+</Project>
