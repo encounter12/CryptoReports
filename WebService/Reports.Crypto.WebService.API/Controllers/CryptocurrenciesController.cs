@@ -1,6 +1,9 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Reports.Crypto.WebService.DTO;
 using Reports.Crypto.WebService.Services.Contracts;
 
 namespace Reports.Crypto.WebService.API.Controllers
@@ -22,10 +25,13 @@ namespace Reports.Crypto.WebService.API.Controllers
         }
         
         [HttpGet]
-        public async Task<IActionResult> Get()
+        public async Task<IActionResult> Get(DateTime fromDate, DateTime toDate)
         {
-            await _cryptocurrencyService.AddCryptoCurrencyData();
-            return Ok();
+            await _cryptocurrencyService.AddCryptocurrencyData();
+            List<CryptocurrencyDisplayDataDto> result 
+                = await _cryptocurrencyService.GetCryptoCurrencyData(fromDate, toDate);
+            
+            return Ok(result);
         }
     }
 }

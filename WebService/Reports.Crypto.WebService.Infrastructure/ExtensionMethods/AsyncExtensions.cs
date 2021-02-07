@@ -9,10 +9,10 @@ namespace Reports.Crypto.WebService.Infrastructure.ExtensionMethods
     public static class AsyncExtensions
     {
         // Nesting await in Parallel.ForEach: https://stackoverflow.com/a/25877042/1961386
-        public static Task ForEachAsync<T>(this IEnumerable<T> source, int dop, Func<T, Task> body) 
+        public static Task ForEachAsync<T>(this IEnumerable<T> source, int partitionCount, Func<T, Task> body) 
         { 
             return Task.WhenAll( 
-                from partition in Partitioner.Create(source).GetPartitions(dop) 
+                from partition in Partitioner.Create(source).GetPartitions(partitionCount) 
                 select Task.Run(async delegate { 
                     using (partition) 
                         while (partition.MoveNext()) 

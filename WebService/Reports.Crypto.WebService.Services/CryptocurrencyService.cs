@@ -25,7 +25,7 @@ namespace Reports.Crypto.WebService.Services
             _serviceProvider = serviceProvider;
         }
         
-        public async Task AddCryptoCurrencyData()
+        public async Task AddCryptocurrencyData()
         {
             var cryptocurrencyRepository = _serviceProvider.GetRequiredService<ICryptocurrencyRepository>();
             
@@ -34,12 +34,17 @@ namespace Reports.Crypto.WebService.Services
                 .Select(c => c.Code)
                 .ToListAsync();
             
-            await currencyCodes.ForEachAsync(7, AddDataForSingleCryptocurrency);
+            await currencyCodes.ForEachAsync(partitionCount: 10, AddDataForSingleCryptocurrency);
         }
         
-        public async Task GetCryptoCurrencyData()
+        public async Task<List<CryptocurrencyDisplayDataDto>> GetCryptoCurrencyData(DateTime fromDate, DateTime toDate)
         {
-            await Task.Delay(100);
+            var cryptocurrencyRepository = _serviceProvider.GetRequiredService<ICryptocurrencyRepository>();
+            
+            List<CryptocurrencyDisplayDataDto> cryptoCurrencyData = 
+                await cryptocurrencyRepository.GetCryptoCurrencyData(fromDate, toDate);
+
+            return cryptoCurrencyData;
         }
         
         private async Task AddDataForSingleCryptocurrency(string currencyCode)

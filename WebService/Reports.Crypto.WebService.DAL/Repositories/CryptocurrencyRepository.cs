@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -17,7 +18,7 @@ namespace Reports.Crypto.WebService.DAL.Repositories
         {
             _context = context;
         }
-
+        
         public async Task AddCryptocurrencyData(string currencyCode, List<CryptocurrencyDataDto> cryptocurrencyDataDtos)
         {
             var cryptocurrency = await this.All()
@@ -38,6 +39,33 @@ namespace Reports.Crypto.WebService.DAL.Repositories
             }
             
             Update(cryptocurrency);
+        }
+
+        public async Task<List<CryptocurrencyDisplayDataDto>> GetCryptoCurrencyData(DateTime fromDate, DateTime toDate)
+        {
+            return await All().Join(
+                    _context.CryptocurrencyData,
+                    c => c.Id,
+                    cd => cd.CryptocurrencyId, 
+                    (c, cd) => new
+                    {
+                        c.Code,
+                        cd.Date,
+                        cd.PriceUSD
+                    })
+                .Where(c =>
+                    c.PriceUSD.HasValue 
+                    && c.Date >= fromDate 
+                    && c.Date <= toDate)
+                .OrderBy(c => c.Code)
+                .ThenByDescending(c => c.Date)
+                .Select(c => new CryptocurrencyDisplayDataDto
+                {
+                    Cryptocurrency = c.Code,
+                    Date = c.Date,
+                    PriceUSD = (decimal)c.PriceUSD
+                })
+                .ToListAsync();
         }
     }
 }

@@ -1,11 +1,14 @@
+using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
+using Reports.Crypto.WebService.DTO;
 
 namespace Reports.Crypto.WebService.Services.Contracts
 {
     public interface ICryptocurrencyService
     {
-        Task AddCryptoCurrencyData();
+        Task AddCryptocurrencyData();
 
-        Task GetCryptoCurrencyData();
+        Task<List<CryptocurrencyDisplayDataDto>> GetCryptoCurrencyData(DateTime fromDate, DateTime toDate);
     }
 }
