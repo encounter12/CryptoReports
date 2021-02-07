@@ -19,9 +19,12 @@ namespace Reports.Crypto.WebService.Services
     {
         private readonly IServiceProvider _serviceProvider;
         
-        public CryptocurrencyDataService(IServiceProvider serviceProvider)
+        private readonly HttpClient _httpClient;
+        
+        public CryptocurrencyDataService(IServiceProvider serviceProvider, HttpClient httpClient)
         {
             _serviceProvider = serviceProvider;
+            _httpClient = httpClient;
         }
         
         public async Task AddCryptocurrencyData()
@@ -48,8 +51,7 @@ namespace Reports.Crypto.WebService.Services
         {
             var url = $"https://coinmetrics.io/newdata/{currencyCode}.csv";
             
-            var httpClient = new HttpClient();
-            var response = await httpClient.GetAsync(url);
+            var response = await _httpClient.GetAsync(url);
 
             if (response.IsSuccessStatusCode)
             {
@@ -63,9 +65,9 @@ namespace Reports.Crypto.WebService.Services
                 
                 IEnumerable<CryptocurrencyDataDto> cryptocurrencyRecords;
                 
-                using (var csv = new CsvReader(reader, config))
+                using (var csvReader = new CsvReader(reader, config))
                 {
-                    cryptocurrencyRecords = csv.GetRecords<CryptocurrencyDataDto>().ToList();
+                    cryptocurrencyRecords = csvReader.GetRecords<CryptocurrencyDataDto>().ToList();
                 }
                 
                 var cryptocurrencyDataRepository = _serviceProvider.GetRequiredService<ICryptocurrencyDataRepository>();
