@@ -32,7 +32,6 @@ namespace Reports.Crypto.WebService.DAL.Repositories
                 {
                     Date = singleCryptoDataForAddition.Date,
                     PriceUSD = singleCryptoDataForAddition.PriceUSD,
-                    Cryptocurrency = cryptocurrency
                 };
                 
                 cryptocurrency.CryptocurrencyData.Add(cryptocurrencyData);

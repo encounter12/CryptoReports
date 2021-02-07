@@ -20,6 +20,8 @@ namespace Reports.Crypto.WebService.DAL.Repositories
                 "An instance of DbContext is required to use this repository.", nameof(context));
 
             DbSet = context.Set<T>();
+
+            Console.WriteLine("Created Generic Repo");
         }
 
         public CryptocurrenciesDbContext Context => _context;

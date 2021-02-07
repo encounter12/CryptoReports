@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
@@ -7,28 +8,42 @@ using System.Threading.Tasks;
 using CsvHelper;
 using CsvHelper.Configuration;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using Reports.Crypto.WebService.DAL.Repositories.Contracts;
 using Reports.Crypto.WebService.DTO;
 using Reports.Crypto.WebService.Services.Contracts;
+using Reports.Crypto.WebService.Services.Extensions;
 
 namespace Reports.Crypto.WebService.Services
 {
     public class CryptocurrencyService: ICryptocurrencyService
     {
-        private readonly ICryptocurrencyRepository _cryptocurrencyRepository;
+        private readonly IServiceProvider _serviceProvider;
         
-        public CryptocurrencyService(ICryptocurrencyRepository cryptocurrencyRepository)
+        public CryptocurrencyService(IServiceProvider serviceProvider)
         {
-            _cryptocurrencyRepository = cryptocurrencyRepository;
+            _serviceProvider = serviceProvider;
         }
         
         public async Task AddCryptoCurrencyData()
         {
-            var currencyCode = await _cryptocurrencyRepository.All()
-                .OrderBy(c => c.Code)
-                .Select(c => c.Code)
-                .FirstOrDefaultAsync();
+            var cryptocurrencyRepository = _serviceProvider.GetRequiredService<ICryptocurrencyRepository>();
             
+            var currencyCodes = await cryptocurrencyRepository
+                .All()
+                .Select(c => c.Code)
+                .ToListAsync();
+            
+            await currencyCodes.ForEachAsync(7, AddDataForSingleCryptocurrency);
+        }
+        
+        public async Task GetCryptoCurrencyData()
+        {
+            await Task.Delay(100);
+        }
+        
+        private async Task AddDataForSingleCryptocurrency(string currencyCode)
+        {
             var url = $"https://coinmetrics.io/newdata/{currencyCode}.csv";
             
             var httpClient = new HttpClient();
@@ -44,21 +59,18 @@ namespace Reports.Crypto.WebService.Services
                     PrepareHeaderForMatch = (header, index) => header.ToLower()
                 };
                 
-                var cryptocurrencyRecords = new List<CryptocurrencyDataDto>();
+                List<CryptocurrencyDataDto> cryptocurrencyRecords;
                 
                 using (var csv = new CsvReader(reader, config))
                 {
                     cryptocurrencyRecords = csv.GetRecords<CryptocurrencyDataDto>().ToList();
                 }
+                
+                var cryptocurrencyRepository = _serviceProvider.GetRequiredService<ICryptocurrencyRepository>();
 
-                await _cryptocurrencyRepository.AddCryptocurrencyData(currencyCode, cryptocurrencyRecords);
-                await _cryptocurrencyRepository.SaveChangesAsync();
+                await cryptocurrencyRepository.AddCryptocurrencyData(currencyCode, cryptocurrencyRecords);
+                await cryptocurrencyRepository.SaveChangesAsync();
             }
-        }
-        
-        public async Task GetCryptoCurrencyData()
-        {
-            await Task.Delay(100);
         }
     }
 }

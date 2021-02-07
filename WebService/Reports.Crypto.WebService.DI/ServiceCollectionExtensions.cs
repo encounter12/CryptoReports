@@ -22,13 +22,13 @@ namespace Reports.Crypto.WebService.DI
         
         private static void BindServices(IServiceCollection services)
         {
-            services.AddScoped<ICryptocurrencyService, CryptocurrencyService>();
+            services.AddTransient<ICryptocurrencyService, CryptocurrencyService>();
         }
 
         private static void BindRepositories(IServiceCollection services)
         {
-            services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
-            services.AddScoped<ICryptocurrencyRepository, CryptocurrencyRepository>();
+            services.AddTransient(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+            services.AddTransient<ICryptocurrencyRepository, CryptocurrencyRepository>();
         }
 
         private static void BindDbContexts(IServiceCollection services, string connectionString)
@@ -36,7 +36,8 @@ namespace Reports.Crypto.WebService.DI
             services.AddDbContext<CryptocurrenciesDbContext>(options =>
                 options
                     .UseLazyLoadingProxies()
-                    .UseSqlite(connectionString));
+                    .UseSqlite(connectionString),
+                ServiceLifetime.Transient);
         }
     }
 }
