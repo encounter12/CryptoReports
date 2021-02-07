@@ -5,10 +5,10 @@ using Reports.Crypto.WebService.DTO;
 
 namespace Reports.Crypto.WebService.Services.Contracts
 {
-    public interface ICryptocurrencyService
+    public interface ICryptocurrencyDataService
     {
         Task AddCryptocurrencyData();
 
-        Task<List<CryptocurrencyDisplayDataDto>> GetCryptoCurrencyData(DateTime fromDate, DateTime toDate);
+        Task<IEnumerable<CryptocurrencyDisplayDataDto>> GetCryptocurrencyData(DateTime fromDate, DateTime toDate);
     }
 }

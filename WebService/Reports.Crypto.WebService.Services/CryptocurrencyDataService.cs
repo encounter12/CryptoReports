@@ -7,7 +7,6 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using CsvHelper;
 using CsvHelper.Configuration;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Reports.Crypto.WebService.DAL.Repositories.Contracts;
 using Reports.Crypto.WebService.DTO;
@@ -16,33 +15,31 @@ using Reports.Crypto.WebService.Services.Contracts;
 
 namespace Reports.Crypto.WebService.Services
 {
-    public class CryptocurrencyService: ICryptocurrencyService
+    public class CryptocurrencyDataService: ICryptocurrencyDataService
     {
         private readonly IServiceProvider _serviceProvider;
         
-        public CryptocurrencyService(IServiceProvider serviceProvider)
+        public CryptocurrencyDataService(IServiceProvider serviceProvider)
         {
             _serviceProvider = serviceProvider;
         }
         
         public async Task AddCryptocurrencyData()
         {
-            var cryptocurrencyRepository = _serviceProvider.GetRequiredService<ICryptocurrencyRepository>();
+            var cryptocurrencyDataRepository = _serviceProvider.GetRequiredService<ICryptocurrencyDataRepository>();
+
+            IEnumerable<string> cryptocurrenciesCodes = await cryptocurrencyDataRepository.AllCryptocurrenciesCodes();
             
-            var currencyCodes = await cryptocurrencyRepository
-                .All()
-                .Select(c => c.Code)
-                .ToListAsync();
-            
-            await currencyCodes.ForEachAsync(partitionCount: 10, AddDataForSingleCryptocurrency);
+            await cryptocurrenciesCodes.ForEachAsync(partitionCount: 10, AddDataForSingleCryptocurrency);
         }
         
-        public async Task<List<CryptocurrencyDisplayDataDto>> GetCryptoCurrencyData(DateTime fromDate, DateTime toDate)
+        public async Task<IEnumerable<CryptocurrencyDisplayDataDto>> GetCryptocurrencyData(
+            DateTime fromDate, DateTime toDate)
         {
-            var cryptocurrencyRepository = _serviceProvider.GetRequiredService<ICryptocurrencyRepository>();
+            var cryptocurrencyDataRepository = _serviceProvider.GetRequiredService<ICryptocurrencyDataRepository>();
             
-            List<CryptocurrencyDisplayDataDto> cryptoCurrencyData = 
-                await cryptocurrencyRepository.GetCryptoCurrencyData(fromDate, toDate);
+            IEnumerable<CryptocurrencyDisplayDataDto> cryptoCurrencyData = 
+                await cryptocurrencyDataRepository.GetCryptocurrencyData(fromDate, toDate);
 
             return cryptoCurrencyData;
         }
@@ -64,17 +61,17 @@ namespace Reports.Crypto.WebService.Services
                     PrepareHeaderForMatch = (header, index) => header.ToLower()
                 };
                 
-                List<CryptocurrencyDataDto> cryptocurrencyRecords;
+                IEnumerable<CryptocurrencyDataDto> cryptocurrencyRecords;
                 
                 using (var csv = new CsvReader(reader, config))
                 {
                     cryptocurrencyRecords = csv.GetRecords<CryptocurrencyDataDto>().ToList();
                 }
                 
-                var cryptocurrencyRepository = _serviceProvider.GetRequiredService<ICryptocurrencyRepository>();
+                var cryptocurrencyDataRepository = _serviceProvider.GetRequiredService<ICryptocurrencyDataRepository>();
 
-                await cryptocurrencyRepository.AddCryptocurrencyData(currencyCode, cryptocurrencyRecords);
-                await cryptocurrencyRepository.SaveChangesAsync();
+                await cryptocurrencyDataRepository.AddCryptocurrencyData(currencyCode, cryptocurrencyRecords);
+                await cryptocurrencyDataRepository.SaveChangesAsync();
             }
         }
     }

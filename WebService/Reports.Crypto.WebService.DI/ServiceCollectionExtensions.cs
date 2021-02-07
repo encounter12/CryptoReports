@@ -22,13 +22,13 @@ namespace Reports.Crypto.WebService.DI
         
         private static void BindServices(IServiceCollection services)
         {
-            services.AddTransient<ICryptocurrencyService, CryptocurrencyService>();
+            services.AddTransient<ICryptocurrencyDataService, CryptocurrencyDataService>();
         }
 
         private static void BindRepositories(IServiceCollection services)
         {
             services.AddTransient(typeof(IGenericRepository<>), typeof(GenericRepository<>));
-            services.AddTransient<ICryptocurrencyRepository, CryptocurrencyRepository>();
+            services.AddTransient<ICryptocurrencyDataRepository, CryptocurrencyDataRepository>();
         }
 
         private static void BindDbContexts(IServiceCollection services, string connectionString)
