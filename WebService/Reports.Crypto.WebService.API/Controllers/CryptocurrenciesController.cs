@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Reports.Crypto.WebService.Services.Contracts;
 
 namespace Reports.Crypto.WebService.API.Controllers
 {
@@ -12,16 +10,21 @@ namespace Reports.Crypto.WebService.API.Controllers
     public class CryptocurrenciesController : ControllerBase
     {
         private readonly ILogger<CryptocurrenciesController> _logger;
-
-        public CryptocurrenciesController(ILogger<CryptocurrenciesController> logger)
+        
+        private readonly ICryptocurrencyService _cryptocurrencyService;
+        
+        public CryptocurrenciesController(
+            ILogger<CryptocurrenciesController> logger, 
+            ICryptocurrencyService cryptocurrencyService)
         {
             _logger = logger;
+            _cryptocurrencyService = cryptocurrencyService;
         }
-
+        
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            await Task.Delay(100);
+            await _cryptocurrencyService.AddCryptoCurrencyData();
             return Ok();
         }
     }

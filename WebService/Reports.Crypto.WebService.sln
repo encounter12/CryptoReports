@@ -8,6 +8,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reports.Crypto.WebService.S
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reports.Crypto.WebService.DI", "Reports.Crypto.WebService.DI\Reports.Crypto.WebService.DI.csproj", "{6260FC13-290B-4C25-84E6-1F6E58E3F61C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reports.Crypto.WebService.Infrastructure", "Reports.Crypto.WebService.Infrastructure\Reports.Crypto.WebService.Infrastructure.csproj", "{857CFFB1-C52E-47BC-A4CD-E9D0DC4FC03B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reports.Crypto.WebService.DTO", "Reports.Crypto.WebService.DTO\Reports.Crypto.WebService.DTO.csproj", "{5D846A09-3291-47A7-ADCE-4BE8173274F1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +34,13 @@ Global
 		{6260FC13-290B-4C25-84E6-1F6E58E3F61C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6260FC13-290B-4C25-84E6-1F6E58E3F61C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6260FC13-290B-4C25-84E6-1F6E58E3F61C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{857CFFB1-C52E-47BC-A4CD-E9D0DC4FC03B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{857CFFB1-C52E-47BC-A4CD-E9D0DC4FC03B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{857CFFB1-C52E-47BC-A4CD-E9D0DC4FC03B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{857CFFB1-C52E-47BC-A4CD-E9D0DC4FC03B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5D846A09-3291-47A7-ADCE-4BE8173274F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D846A09-3291-47A7-ADCE-4BE8173274F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D846A09-3291-47A7-ADCE-4BE8173274F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D846A09-3291-47A7-ADCE-4BE8173274F1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
