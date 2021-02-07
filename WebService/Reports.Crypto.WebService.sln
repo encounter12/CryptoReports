@@ -10,6 +10,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reports.Crypto.WebService.D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reports.Crypto.WebService.DTO", "Reports.Crypto.WebService.DTO\Reports.Crypto.WebService.DTO.csproj", "{5D846A09-3291-47A7-ADCE-4BE8173274F1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reports.Crypto.WebService.Infrastructure", "Reports.Crypto.WebService.Infrastructure\Reports.Crypto.WebService.Infrastructure.csproj", "{C183C5E5-3F69-4375-ABCA-52154B2BF723}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,5 +38,9 @@ Global
 		{5D846A09-3291-47A7-ADCE-4BE8173274F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5D846A09-3291-47A7-ADCE-4BE8173274F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5D846A09-3291-47A7-ADCE-4BE8173274F1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C183C5E5-3F69-4375-ABCA-52154B2BF723}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C183C5E5-3F69-4375-ABCA-52154B2BF723}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C183C5E5-3F69-4375-ABCA-52154B2BF723}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C183C5E5-3F69-4375-ABCA-52154B2BF723}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

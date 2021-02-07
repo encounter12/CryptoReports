@@ -1,0 +1,241 @@
+Progress
+
+CryptoReports
+
+1. web service that has a single endpoint
+https://coinmetrics.io/newdata/<ticker_symbol>.csv
+
+https://coinmetrics.io/newdata/btc.csv
+
+WebService
+
+Coinmetrics
+
+CM Community Network Data
+https://coinmetrics.io/community-network-data/
+
+CM Community Network Data - Data File Downloads
+https://coinmetrics.io/community-network-data/#comm-files
+
+CoinMetrics.io API Tools
+https://coinmetrics.io/tools/
+
+Support Desk
+https://coinmetrics.atlassian.net/servicedesk/customer/portal/2/article/319619223
+
+Coin Metrics API v2 (STABLE) (2.0.0)
+https://docs.coinmetrics.io/api/v2/
+
+Ticker symbol
+https://en.wikipedia.org/wiki/Ticker_symbol
+
+
+
+date
+AdrActCnt
+BlkCnt
+BlkSizeByte
+BlkSizeMeanByte
+CapMVRVCur
+CapMrktCurUSD
+CapRealUSD
+DiffMean
+FeeMeanNtv
+FeeMeanUSD
+FeeMedNtv
+FeeMedUSD
+FeeTotNtv
+FeeTotUSD
+HashRate
+IssContNtv
+IssContPctAnn
+IssContUSD
+IssTotNtv
+IssTotUSD
+NVTAdj
+NVTAdj90
+PriceBTC
+PriceUSD
+ROI1yr
+ROI30d
+SplyCur
+SplyExpFut10yrCMBI
+SplyFF
+TxCnt
+TxTfrCnt
+TxTfrValAdjNtv
+TxTfrValAdjUSD
+TxTfrValMeanNtv
+TxTfrValMeanUSD
+TxTfrValMedNtv
+TxTfrValMedUSD
+TxTfrValNtv
+TxTfrValUSD
+VtyDayRet180d
+VtyDayRet30d
+VtyDayRet60d
+
+2. A report with a line chart visualizing the cryptocurrencies price change over a period
+
+3. A web application showing the report with the cryptocurrencies data
+
+create a service client
+create report instance
+create report document in HTML5 format
+
+
+------------------------
+
+Telerik Reporting (References):
+
+Welcome to Telerik Reporting!
+https://docs.telerik.com/reporting/overview
+
+Interactive Reporting Demos
+https://demos.telerik.com/reporting
+
+Web Report Designer Demo
+https://demos.telerik.com/reporting/designer
+
+Understanding the Report Lifecycle
+https://docs.telerik.com/reporting/designing-reports-life-cycle
+
+Report Structure
+https://docs.telerik.com/reporting/designing-reports-understanding-report-structure
+
+---------------------------------
+
+Report Designer
+
+Report Designer Tools
+https://docs.telerik.com/reporting/report-designers
+
+Web Report Designer elements
+https://docs.telerik.com/reporting/web-report-designer
+
+How to setup the WebReportDesigner in .NET Core application
+https://docs.telerik.com/reporting/web-report-designer-setup-in-net-core
+
+--------------------------------
+
+Report Source:
+
+Telerik Reporting Configuration
+https://docs.telerik.com/reporting/configuring-telerik-reporting#json
+
+How to add the Telerik private NuGet feed to Visual Studio
+https://docs.telerik.com/reporting/add-the-telerik-private-nuget-feed-to-visual-studio
+
+SqlDataSource Wizard
+https://docs.telerik.com/reporting/web-report-designer-tools-sqldatasource-wizard
+
+Table/Crosstab Wizard
+https://docs.telerik.com/reporting/web-report-designer-table-crosstab-wizard
+
+How to Connect to Google Books APIs
+https://docs.telerik.com/reporting/how-to-connect-to-google-books-apis
+
+JsonDataSource Component
+https://docs.telerik.com/reporting/jsondatasource-component
+
+Rest Service Report Source Resolver - Overview
+https://docs.telerik.com/reporting/telerik-reporting-rest-service-report-resolver
+
+IReportSourceResolver Interface
+https://docs.telerik.com/reporting/t-telerik-reporting-services-ireportsourceresolver
+
+Report Sources
+https://docs.telerik.com/reporting/report-sources
+
+Report Viewer Initialization
+https://docs.telerik.com/reporting/html5-report-viewer-jquery-fn-telerik-reportviewer#Options
+
+-------------
+
+Rest API Services
+
+Telerik Reporting REST Services
+https://docs.telerik.com/reporting/telerik-reporting-rest-conception
+
+REST API Reference
+https://docs.telerik.com/reporting/telerik-reporting-rest-api
+
+Get Available Document Formats
+GET /api/reports/formats
+https://docs.telerik.com/reporting/telerik-reporting-rest-general-api-get-document-formats
+
+
+----------------
+
+Reporting Engine
+
+Rendering Extensions
+https://docs.telerik.com/reporting/configuring-rendering-extensions
+
+
+----------------
+
+Display Reports in Applications
+https://docs.telerik.com/reporting/report-viewers-overview
+
+HTML5 Report Viewer - Overview
+https://docs.telerik.com/reporting/html5-report-viewer
+
+How to Use HTML5 Report Viewer with REST Service
+https://docs.telerik.com/reporting/html5-report-viewer-quick-start
+
+How to Use HTML5 Report Viewer in an ASP.NET Core 3+ application
+https://docs.telerik.com/reporting/manual-setup-of-html5-report-viewer-in-asp-net-core-3
+
+How to Set ReportSource for Report Viewers
+https://docs.telerik.com/reporting/report-sources-viewers
+
+Report Viewer Initialization
+https://docs.telerik.com/reporting/html5-report-viewer-jquery-fn-telerik-reportviewer#Options
+
+Angular Report Viewer Overview
+https://docs.telerik.com/reporting/angular-report-viewer
+
+How to Use Angular Report Viewer with Angular CLI
+https://docs.telerik.com/reporting/angular-report-how-to-use-with-angular-cli
+
+Embedding Beautiful Reporting into Angular Applications
+https://www.telerik.com/blogs/embedding-beautiful-reporting-angular-applications
+
+
+--------------
+
+.NET Core Support
+https://docs.telerik.com/reporting/use-reports-in-net-core-apps
+
+--------------
+
+Videos:
+
+Reporting Videos
+https://www.telerik.com/videos/reporting
+
+Getting Started with Telerik Reporting
+https://www.youtube.com/watch?v=UF1mL6vzJDs
+
+Telerik Reporting and Testing R3 2020 Release | #webinar
+https://www.youtube.com/watch?v=-uZxpBV1Aww
+
+
+--------------
+
+libgdiplus
+https://www.mono-project.com/docs/gui/libgdiplus/
+
+libgdiplus: An Open Source implementation of the GDI+ API.
+https://github.com/mono/libgdiplus
+
+----------------
+
+CREATE LOGIN cryptoReports
+WITH PASSWORD = 'Qwerty123';
+
+EXEC master..sp_addsrvrolemember @loginame = N'cryptoReports', @rolename = N'dbcreator'
+GO
+
+------------------

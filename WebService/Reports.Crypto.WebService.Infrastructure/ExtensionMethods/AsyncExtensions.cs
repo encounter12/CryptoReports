@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Reports.Crypto.WebService.Services.Extensions
+namespace Reports.Crypto.WebService.Infrastructure.ExtensionMethods
 {
     public static class AsyncExtensions
     {

@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Reports.Crypto.WebService.DAL.Repositories.Contracts;
 using Reports.Crypto.WebService.DTO;
+using Reports.Crypto.WebService.Infrastructure.ExtensionMethods;
 using Reports.Crypto.WebService.Services.Contracts;
-using Reports.Crypto.WebService.Services.Extensions;
 
 namespace Reports.Crypto.WebService.Services
 {

@@ -7,6 +7,7 @@
     <ItemGroup>
       <ProjectReference Include="..\Reports.Crypto.WebService.DAL\Reports.Crypto.WebService.DAL.csproj" />
       <ProjectReference Include="..\Reports.Crypto.WebService.DTO\Reports.Crypto.WebService.DTO.csproj" />
+      <ProjectReference Include="..\Reports.Crypto.WebService.Infrastructure\Reports.Crypto.WebService.Infrastructure.csproj" />
     </ItemGroup>
 
     <ItemGroup>
